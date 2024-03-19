@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class MiembroClub {
+-nombre: string
+-apellido: string
+-actividad: string
+-cargo: string
+}
+
+Futbolista -u-|> MiembroClub
+Entrenador -u-|> MiembroClub
+Presidente -u-|> MiembroClub
+FisioTerapeuta -u-|> MiembroClub
+
+class Futbolista {
+-numEntrenamientos: int
+-numCamiseta: int
+-posicion: string
+-status: string
+}
+
+FutbolistaTitular -u-|> Futbolista
+FutbolistaSuplente -u-|> Futbolista
+
+class FutbolistaTitular {
+-partidosIniciados: int
+}
+class FutbolistaSuplente {
+-numRecambios: int
+}
+class Entrenador {
++entrenarTacticas():void
+}
+class Presidente {
++supervisar():void
+}
+class FisioTerapeuta {
+-cantAtenciones: int
++registrarProgreso(): string
+}
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Consultas {
+-paciente:Paciente
+-fechaConsulta:Date
+-especialidad:String
+-horaMinuto:Time
+}
+Paciente *.l. Consultas
+
+class Paciente {
+-fechaNacimiento:Date
+-nombre:String
+-apellido:String
+-primeraConsulta:Boolean
++evaluaInicial()
+}
+
+class Particular {
+-cobroConsulta:Double
+-DNI:Integer
+}
+Particular -u-|> Paciente
+
+class Social {
+-obraSocial:String
+-numAsociado:Integer
++compareTo(o Objeto)
+}
+Social -u-|> Paciente
+
+Social ..|> Comparable
+interface Comparable {
++compareTo(o Objeto)
+}
+
+@enduml

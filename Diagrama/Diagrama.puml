@@ -1,0 +1,35 @@
+@startuml
+'https://platuml.com/class-diagram'
+
+Cliente --* Pedido
+class Cliente{
+- Nombre: string
+- Telefono: int
+- Domicilio: string
++ realizarPedido()
+}
+
+Pedido o-- Item
+class Pedido{
+- Codigo: int
+- Fecha: date
+- Cliente: string
+- Items: item[]
++ agregarItem()
++ calcularTotal()
+}
+
+class Item{
+- Nombre: string
+- Precio: double
+- Cantidad: int
+}
+@enduml
+-------RELACIÓN DE COMPOSICIÓN
+Revista *-- Edición
+-------RELACIÓN DE AGREGACIÓN
+Edición o-- Articulo
+-------RELACIÓN DE ASOCIACIÓN
+Editorial --> Revista
+-------RELACIÓN DE USO
+Imprenta ..> Revista

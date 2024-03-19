@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Persona{
+-nombre: string
+-apellido: string
+-edad: int
+-fechaEntrada: date
+-horaEntrada: time
+-fechaSalida: date
+-horaSalida: time
++realizarActividad():void
+}
+
+Estudiante -u-|> Persona
+Profesor -u-|> Persona
+Administrativo -u-|> Persona
+
+class Estudiante{
+legajoEstudiante: int
++estudiar(): void
+}
+class Profesor{
+legajoProfesor: int
+titulo: string
+fechaIncorporado: date
++darClases(): void
+}
+class Administrativo{
+legajoAdministrativo: int
+cargo: string
++trabajar(): void
+}
+
+
+
+@enduml

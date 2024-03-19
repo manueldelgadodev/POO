@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+abstract class CuentaCorriente {
+- impuesto: int
++gravar(impuesto).int
+}
+
+
+@enduml

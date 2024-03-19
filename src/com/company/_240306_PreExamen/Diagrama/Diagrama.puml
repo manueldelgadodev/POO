@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+abstract class Embarcacion {
+-capitan:Capitan
+-precioBase:double
+-valorAdicional:double
+-anoFabrica:int
+-eslora:double
++calcularMontoAlquiler(precioBase:int,
+anoFabrica:int)
+}
+
+class Capitan {
+-nombre:String
+-apellido:String
+-matriculaNavegacion:int
+}
+Capitan -r-|> Embarcacion
+
+class Veleros {
+-cantMastiles:int
++veleroEsGrande()
+}
+Veleros -u-|> Embarcacion
+
+class Yates {
+-cantCamarotes:int
++compareTo(o Objeto)
+}
+Yates -u-|> Embarcacion
+
+Veleros ..|> Comparable
+Yates ..|> Comparable
+interface Comparable {
++compareTo(o Objeto)
+}
+@enduml
