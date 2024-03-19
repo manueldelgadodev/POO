@@ -1,40 +1,30 @@
 package com.company._240318_Excepciones.Pacientes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Paciente {
-    String nombre;
-    String apellido;
-    String historiaClinica;
-    Date fechaInternacion;
-    Date fechaAlta;
+    private String nombre;
+    private String apellido;
+    private String DNI;
+    private LocalDate fechaInternacion;
+    private LocalDate fechaAlta = null;
 
-
-    Paciente(String nombre, String apellido, String historiaClinica, Date fechaInternacion)
-    {   Date hoy= new Date();
-        this.nombre=nombre;
-        this.apellido=apellido;
-        fechaAlta=null;
-        if (fechaInternacion.before(hoy))
-            this.fechaInternacion=fechaInternacion;
+    public Paciente(String nombre, String apellido, String DNI, LocalDate fechaInternacion) throws FechaInternacionException {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.DNI = DNI;
+        if(fechaInternacion.isAfter(LocalDate.now())){
+            throw new FechaInternacionException("La fecha de internacion no debe ser posterior al dia de hoy");
+        } else {
+            this.fechaInternacion = fechaInternacion;
+        }
     }
 
-    public Date getFechaInternacion() {
-        return fechaInternacion;
-    }
-
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void darAlta(Date fechaAlta)
-    {
-        if (fechaAlta.after(fechaInternacion))
+    public void darAlta(LocalDate fechaAlta) throws FechaInternacionException {
+        if (fechaAlta.isAfter(fechaInternacion))
             System.out.println("Ok");
         else
-            System.out.println("No se puede");
+            throw new FechaInternacionException("La fecha de alta debe ser posterior al de internacion");
     }
-
-
-
 }
